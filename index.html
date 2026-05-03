@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>si lo lees me debes un beso :p</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #be5395, #6ebad5, #ae2e90, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            text-align: center;
+            margin: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 10px;
+        }
+
+        h1 { color: #e042e2; }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 45%;
+            max-width: 200px;
+            height: 200px;
+            margin: 10px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .card { width: 20%; }
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        button {
+            background: #e042e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .hidden { display: none; }
+
+        .flower {
+            font-size: 50px;
+            animation: floatFlower 5s infinite;
+        }
+
+        @keyframes floatFlower {
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -100px;
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            to { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+<body>
+
+<!-- corazones -->
+<div class="heart" style="left:10%">💜</div>
+<div class="heart" style="left:20%">💜</div>
+<div class="heart" style="left:30%">💜</div>
+<div class="heart" style="left:40%">💜</div>
+<div class="heart" style="left:50%">💜</div>
+<div class="heart" style="left:60%">💜</div>
+<div class="heart" style="left:70%">💜</div>
+<div class="heart" style="left:80%">💜</div>
+<div class="heart" style="left:90%">💜</div>
+<div class="heart" style="left:100%">💜</div>
+
+<div class="container">
+
+    <h1>Ashley💖</h1>
+    <p>Para que recuerdes lo mucho que te amo 💜</p>
+
+    <button onclick="irVideo()">Reprodúceme</button>
+    <button id="showFlowerButton">Para ti 🌸</button>
+
+    <div id="flowerMessage" class="hidden">
+        <div class="flower">💐</div>
+        <p>para mi Capibara💖</p>
+    </div>
+
+    <div class="gallery">
+
+        <!-- TARJETA 1 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="foto1.jpg">
+                </div>
+                <div class="card-back">
+                    <p>Te amo💖</p>
+                    <video controls src="video1.mp4"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 2 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="foto2.jpg">
+                </div>
+                <div class="card-back">
+                    <p>consejito de 1 mano</p>
+                    <video controls src="video2.mp4"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 3 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="foto3.jpg">
+                </div>
+                <div class="card-back">
+                    <p>capibaras</p>
+                    <video controls src="video3.mp4"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA 4 (ARREGLADA) -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="foto4.jpg">
+                </div>
+                <div class="card-back">
+                    <p>Capibara💖</p>
+                    <video controls src="video4.mp4"></video>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="player" style="display:none;"></div>
+
+<script>
+function flipCard(card){
+    card.classList.toggle("flipped");
+}
+
+function irVideo(){
+    window.location.href="https://www.tiktok.com/";
+}
+
+/* YOUTUBE */
+let player;
+
+function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: 'sD9_l3oDOag',
+        playerVars: {
+            autoplay: 1,
+            mute: 1,
+            loop: 1,
+            playlist: 'sD9_l3oDOag'
+        },
+        events: {
+            onReady: e => e.target.playVideo(),
+            onStateChange: e => {
+                if(e.data === YT.PlayerState.ENDED){
+                    player.seekTo(0);
+                    player.playVideo();
+                }
+            }
+        }
+    });
+}
+
+/* BOTÓN FLOR */
+document.getElementById("showFlowerButton")
+.addEventListener("click", () => {
+    document.getElementById("flowerMessage")
+    .classList.remove("hidden");
+});
+</script>
+
+</body>
+</html>
